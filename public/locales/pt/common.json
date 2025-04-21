@@ -1,0 +1,22 @@
+{
+  "common": {
+    "homepage": "Página inicial",
+    "logoImageAltText": "Logótipo",
+    "aboutUs": "sobre nós",
+    "description1": "Fundada em 1984 pela designer Chantelle West, sempre acreditámos no poder dos produtos fabricados localmente.",
+    "description2": "A qualidade do artesanato e os artesãos locais que empregamos são o que tornam a Luxette a nossa missão de vida.",
+    "poweredBy": "Desenvolvido por",
+    "regionalSettings": "Definições regionais",
+    "language": "Idioma"
+  },
+  "product": {
+    "trendingProducts": "Tendências do momento",
+    "relatedProducts": "Também poderá gostar de",
+    "addToCart": "Adicionar ao carrinho",
+    "quantity": "Quantidade"
+  },
+  "notFound": {
+    "title": "Página não encontrada",
+    "description": "Esta página parece não existir. <0>Clique aqui</0> para voltar à página inicial."
+  }
+}
