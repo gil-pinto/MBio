@@ -34,6 +34,8 @@
     "@contentful/f36-icons": "^4.23.2",
     "@contentful/f36-tokens": "^4.0.1",
     "@contentful/live-preview": "^4.6.12",
+    "@contentful/rich-text-react-renderer": "^16.0.1",
+    "@contentful/rich-text-types": "^17.0.0",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@next/bundle-analyzer": "^13.0.4",

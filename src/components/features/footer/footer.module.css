@@ -1,0 +1,57 @@
+/* footer.module.css */
+.footer {
+  background: black;
+  color: white;
+  padding: 40px;
+}
+
+.footerColumns {
+  display: flex;
+  gap: 20px;
+}
+
+.footerColumn {
+  flex: 1;
+}
+
+.footerTitle {
+  font-weight: bold;
+}
+
+.footerLinks li {
+  margin-bottom: 6px;
+}
+
+.footerLinks li :hover {
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+.footerBottom {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  flex-direction: row-reverse;
+}
+
+.footerSocial {
+  display: flex;
+  gap: 10px;
+}
+
+.socialIcon img {
+  width: 24px;
+  height: 24px;
+}
+
+.footerLegal {
+  font-size: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.footerInfo {
+  margin-top: 30px;
+  font-size: 12px;
+  color: #aaa;
+}
