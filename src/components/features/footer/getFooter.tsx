@@ -74,6 +74,21 @@ const useFooterData = () => {
               },
             })) ?? [],
           company_info: footer.companyInfo ?? null,
+          up_bottom: footer.upBottom
+            ? {
+                upText: footer.upBottom.upText ?? '',
+                arrowUrl: footer.upBottom.arrow?.url ?? '',
+                url: footer.upBottom.url ?? '',
+              }
+            : null,
+          subscribe_callout: footer.subscribeCallout
+            ? {
+                title: footer.subscribeCallout.title ?? '',
+                description: footer.subscribeCallout.description ?? null,
+                buttonText: footer.subscribeCallout.buttonText ?? '',
+                buttonUrl: footer.subscribeCallout.buttonUrl ?? '#',
+              }
+            : null,
         };
 
         setFooterData(parsedFooter);

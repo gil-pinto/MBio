@@ -1,6 +1,27 @@
 export const GET_FOOTER_QUERY = `
   query GetFooter($id: String!, $locale: String) {
     footer(id: $id, locale: $locale) {
+      upBottom {
+        __typename
+        ... on UpBottom {
+          upText
+          arrow {
+            url
+          }
+          url
+        }
+      }
+      subscribeCallout {
+        __typename
+        ... on SubscriptionCallout {
+          title
+          description {
+            json
+          }
+          buttonText
+          buttonUrl
+        }
+      }
       footerColumnsCollection {
         items {
           title

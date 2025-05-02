@@ -1,57 +1,274 @@
-/* footer.module.css */
 .footer {
-  background: black;
-  color: white;
-  padding: 40px;
+  background-color: #000;
+  color: #fff;
+  padding-left: 7%;
+  padding-right: 7%;
+}
+
+.upBottomContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.upBottom {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column-reverse;
+  margin-bottom: 5rem;
+  margin-top: 5rem;
+}
+
+.upBottom p {
+  font-size: 16px;
+  padding-top: 1rem;
+}
+
+.arrowImage {
+  width: 70px;
+  height: 70px;
+}
+
+.subscribeCallout {
+  display: flex;
+  justify-content: space-between;
+  border-width: 1px;
+  margin-bottom: 40px;
+  padding: 2rem;
+  border-radius: 3px;
+  border-color: #757575;
+  flex-wrap: wrap;
+}
+
+.subscribeDescription {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  max-width: 60%;
+}
+
+.subscribeCallout h4 {
+  font-size: 20px;
+  font-weight: bold;
+  padding-bottom: 1rem;
+}
+
+.subscribeDescription p {
+  font-size: 16px;
+  color: #ccc;
+}
+
+.subscribeButton {
+  background-color: #0473c7;
+  color: #fff;
+  border-radius: 3px;
+  width: 21rem;
+  height: 4rem;
+  display: flex;
+  font-weight: bold;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
 }
 
 .footerColumns {
   display: flex;
-  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+  width: 100%;
 }
 
 .footerColumn {
-  flex: 1;
+  padding-inline-end: 30px;
+  word-wrap: break-word;
 }
 
 .footerTitle {
   font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 1.5rem;
+  max-width: 15rem;
+  word-wrap: break-word;
+}
+
+.footerLinks {
+  list-style: none;
 }
 
 .footerLinks li {
-  margin-bottom: 6px;
+  margin-bottom: 1.5rem;
+  max-width: 12rem;
 }
 
-.footerLinks li :hover {
-  text-decoration: underline;
-  text-underline-offset: 5px;
+.footerLinks a {
+  color: #bdb7af;
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
+
+.footerLinks a:hover {
+  color: #ccc;
+}
+
 .footerBottom {
   display: flex;
-  justify-content: space-between;
-  margin-top: 30px;
   flex-direction: row-reverse;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  border-top: 1px solid #333;
+  padding-top: 20px;
+  margin-top: 20px;
+  margin-bottom: 10rem;
+  width: 100%;
+  align-items: center;
 }
 
 .footerSocial {
   display: flex;
-  gap: 10px;
+  gap: 1rem;
+}
+
+.socialIcon {
+  padding-right: 2.5rem;
+}
+
+.footerBottom ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .socialIcon img {
-  width: 24px;
-  height: 24px;
+  width: 30px;
+  height: 30px;
 }
 
 .footerLegal {
-  font-size: 12px;
   display: flex;
+  gap: 2rem;
   flex-wrap: wrap;
-  gap: 10px;
+}
+
+.footerLegal a {
+  color: #bdb7af;
+  text-decoration: none;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.footerLegal a:hover {
+  color: #ccc;
 }
 
 .footerInfo {
-  margin-top: 30px;
-  font-size: 12px;
-  color: #aaa;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #fff;
+}
+
+@media screen and (max-width: 1000px) {
+  .footer {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+  .subscribeDescription {
+    max-width: 100%;
+  }
+
+  .subscribeCallout {
+    padding: 1.5rem;
+  }
+
+  .subscribeCallout h4 {
+    font-size: 17px;
+  }
+
+  .subscribeCallout p {
+    font-size: 14px;
+  }
+
+  .subscribeButton {
+    width: 100%;
+    height: 3.5rem;
+  }
+
+  .arrowImage {
+    width: 50px;
+    height: 50px;
+  }
+
+  .upBottom p {
+    font-size: 14px;
+  }
+
+  .footerLegal {
+    gap: 1rem;
+  }
+
+  .footerLegal a {
+    font-size: 14px;
+  }
+
+  .footerInfo {
+    font-size: 12px;
+  }
+
+  .footerBottom {
+    flex-direction: column;
+    align-items: start;
+  }
+
+  .footerBottom ul {
+    padding-bottom: 1rem;
+  }
+
+  .footerSocial {
+    display: flex;
+  }
+  .footerColumns {
+    flex-direction: column;
+  }
+  .footerColumn {
+    height: fit-content;
+  }
+
+  .footerTitle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    max-width: none;
+    border-bottom: 1px solid #757575;
+  }
+
+  .footerColumns .footerColumn:last-child h4 {
+    border-bottom: none !important;
+  }
+
+  .icon {
+    width: 18px;
+    height: 18px;
+    transform: rotate(180deg);
+    transition: transform 0.3s ease;
+  }
+
+  .open .icon {
+    transform: rotate(360deg);
+  }
+
+  .footerLinks {
+    height: fit-content;
+    padding: 0;
+    display: none;
+    padding-left: 1rem;
+  }
+
+  .footerLinks.open {
+    display: block;
+  }
 }
