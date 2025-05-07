@@ -4,8 +4,12 @@ import URI from 'urijs';
 
 import { SeoFieldsFragment } from '@src/lib/__generated/sdk';
 
-const generateUrl = (locale: string, slug: string) =>
-  new URI(process.env.NEXT_PUBLIC_BASE_URL).segment([locale, slug]).toString();
+const generateUrl = (locale: string, slug: string) => {
+  if (!process.env.BASE_URL) {
+    return '';
+  }
+  return new URI(process.env.BASE_URL).segment([locale, slug]).toString();
+};
 
 export const SeoFields = ({
   pageTitle,

@@ -1,4 +1,3 @@
-const dotenv = require('dotenv').config();
 const nextComposePlugins = require('next-compose-plugins');
 
 const headers = require('./config/headers');
@@ -22,6 +21,9 @@ module.exports = withPlugins(plugins, {
    */
   env: {
     ENVIRONMENT_NAME: process.env.ENVIRONMENT_NAME,
+    BASE_URL: process.env.BASE_URL,
+    CONTENTFUL_SPACE_ID: process.env.CONTENTFUL_SPACE_ID,
+    CONTENTFUL_ACCESS_TOKEN: process.env.CONTENTFUL_ACCESS_TOKEN,
   },
 
   /**

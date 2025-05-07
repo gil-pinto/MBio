@@ -112,9 +112,8 @@ const Footer: React.FC<FooterData> = ({
         <ul className={styles.footerSocial}>
           {social_links?.length ? (
             social_links.map((s, i) => (
-              <li>
+              <li key={i}>
                 <a
-                  key={i}
                   href={s.url}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -132,10 +131,8 @@ const Footer: React.FC<FooterData> = ({
           {legal_links?.length ? (
             legal_links.map((link, i) =>
               link.label && link.url ? (
-                <li>
-                  <a key={i} href={link.url}>
-                    {link.label}
-                  </a>
+                <li key={i}>
+                  <a href={link.url}>{link.label}</a>
                 </li>
               ) : (
                 <p key={i}>Legal link data is missing.</p>

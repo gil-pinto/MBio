@@ -2,11 +2,13 @@ import { ChakraProvider } from '@chakra-ui/react';
 import { ContentfulLivePreviewProvider } from '@contentful/live-preview/react';
 import localFont from '@next/font/local';
 import { appWithTranslation } from 'next-i18next';
-import type { AppProps } from 'next/app';
-import { useRouter } from "next/router"
+import { useRouter } from 'next/router';
 
 import { Layout } from '@src/components/templates/layout';
 import { theme } from '@src/theme';
+import { AppProps } from 'next/dist/shared/lib/router/router';
+import App, { AppContext } from 'next/app';
+import { getFooterData } from '@src/components/features/footer/getFooter';
 
 const spaceGrotesk = localFont({
   src: [
@@ -63,8 +65,8 @@ const spaceGrotesk = localFont({
   ],
 });
 
-const App = ({ Component, pageProps }: AppProps) => {
-  const router = useRouter()
+function MyApp({ Component, pageProps }: AppProps & { pageProps: any }) {
+  const router = useRouter();
 
   return (
     <ContentfulLivePreviewProvider
@@ -79,12 +81,25 @@ const App = ({ Component, pageProps }: AppProps) => {
             body: `${spaceGrotesk.style.fontFamily}, ${theme.fonts.body}`,
           },
         }}>
-        <Layout>
+        <Layout footerData={pageProps.footerData}>
           <Component {...pageProps} />
         </Layout>
       </ChakraProvider>
     </ContentfulLivePreviewProvider>
   );
+}
+MyApp.getInitialProps = async (appContext: AppContext) => {
+  const appProps = await App.getInitialProps(appContext);
+  const locale = appContext.ctx?.locale || 'en';
+  const footerData = await getFooterData(locale);
+
+  return {
+    ...appProps,
+    pageProps: {
+      ...appProps.pageProps,
+      footerData,
+    },
+  };
 };
 
-export default appWithTranslation(App);
+export default appWithTranslation(MyApp);
