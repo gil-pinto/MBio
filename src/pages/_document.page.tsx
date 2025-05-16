@@ -1,4 +1,5 @@
 import { Html, Head, Main, NextScript } from 'next/document';
+import Script from 'next/script';
 
 export default function Document() {
   return (
@@ -13,6 +14,22 @@ export default function Document() {
         <meta name="msapplication-TileColor" content="#ffffff" />
         <meta name="msapplication-config" content="/favicons/browserconfig.xml" />
         <meta name="theme-color" content="#ffffff" />
+
+        <link rel="preconnect" href="https://assets.oneweb.mercedes-benz.com" />
+        <link
+          href="https://assets.oneweb.mercedes-benz.com/plugin/workbench/core/7.70.0/css/globals.css"
+          rel="stylesheet"
+        />
+        <link
+          href="https://assets.oneweb.mercedes-benz.com/plugin/workbench/core/7.70.0/css/extensions/components.css"
+          rel="stylesheet"
+        />
+
+        <Script
+          src="https://assets.oneweb.mercedes-benz.com/plugin/workbench/core/7.70.0/workbench/workbench.esm.js"
+          strategy="beforeInteractive"
+          type="module"
+        />
       </Head>
       <body>
         <Main />
