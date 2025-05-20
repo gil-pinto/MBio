@@ -34,7 +34,7 @@ export default async (req, res) => {
     }
   } else {
     try {
-      const landingPageData = await previewClient.pageLanding({
+      const landingPageData = await previewClient.pageLandingCollection({
         locale,
         preview: true,
       });
