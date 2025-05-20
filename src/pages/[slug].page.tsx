@@ -1,68 +1,87 @@
-import { Box } from '@chakra-ui/react';
-import { useContentfulLiveUpdates } from '@contentful/live-preview/react';
-import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
-import { useTranslation } from 'next-i18next';
+import { GetStaticProps, GetStaticPaths } from 'next';
+import { createClient, Entry } from 'contentful';
+import Head from 'next/head';
+import { getGenericContentPageData } from './getpages';
+import { ModularBlockRenderer } from '@src/components/features/renderModules';
 
-import { ProductDetails, ProductTileGrid } from '@src/components/features/product';
-import { SeoFields } from '@src/components/features/seo';
-import { client, previewClient } from '@src/lib/client';
-import { getServerSideTranslations } from '@src/pages/utils/get-serverside-translations';
+type Params = {
+  slug: string;
+};
 
-const Page = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  const { t } = useTranslation();
-  const product = useContentfulLiveUpdates(props.product);
+const contentfulClient = createClient({
+  space: process.env.CONTENTFUL_SPACE_ID ?? '',
+  accessToken: process.env.CONTENTFUL_ACCESS_TOKEN ?? '',
+});
+
+export const getStaticPaths: GetStaticPaths<Params> = async ({ locales }) => {
+  const entries = await contentfulClient.getEntries({
+    content_type: 'genericContentPage',
+  });
+
+  const paths =
+    (locales ?? []).flatMap(locale =>
+      (entries.items as Entry<any>[])
+        .map(item => {
+          const slug = item.fields.urlPath as string;
+          return slug ? { params: { slug }, locale } : null;
+        })
+        .filter(Boolean),
+    ) ?? [];
+
+  return {
+    paths,
+    fallback: false,
+  };
+};
+
+export const getStaticProps: GetStaticProps<{ pageData: any }, Params> = async ({
+  params,
+  locale,
+}) => {
+  const slug = params?.slug ?? '';
+  const currentLocale = locale ?? 'en-US';
+
+  const pageData = await getGenericContentPageData(slug, currentLocale);
+
+  if (!pageData) {
+    return { notFound: true };
+  }
+
+  return {
+    props: { pageData },
+  };
+};
+
+const Page = ({ pageData }: { pageData: any }) => {
+  const {
+    modularBlocksCollection: { items: modularBlocks = [] } = {},
+    pageTitle,
+    seoTitle,
+    seoDescription,
+  } = pageData;
 
   return (
     <>
-      {product.seoFields && <SeoFields {...product.seoFields} />}
-      <ProductDetails {...product} />
-      {product.relatedProductsCollection?.items && (
-        <Box
-          mt={{
-            base: 5,
-            md: 9,
-            lg: 16,
-          }}>
-          <ProductTileGrid
-            title={t('product.relatedProducts')}
-            products={product.relatedProductsCollection.items}
-          />
-        </Box>
-      )}
+      <Head>
+        <title>{seoTitle}</title>
+        <meta name="description" content={seoDescription} />
+      </Head>
+
+      <main>
+        <h1>{pageTitle}</h1>
+
+        {modularBlocks.length > 0 && (
+          <ul>
+            {modularBlocks.map((block: { sys: { id: string } }, index: number) => (
+              <li key={block.sys?.id ?? index}>
+                <ModularBlockRenderer block={block} />
+              </li>
+            ))}
+          </ul>
+        )}
+      </main>
     </>
   );
-};
-
-export const getServerSideProps: GetServerSideProps = async ({ params, locale, preview }) => {
-  if (!params?.slug || !locale) {
-    return {
-      notFound: true,
-    };
-  }
-
-  const gqlClient = preview ? previewClient : client;
-
-  try {
-    const data = await gqlClient.pageProduct({ slug: params.slug.toString(), locale, preview });
-    const product = data.pageProductCollection?.items[0];
-
-    if (!product) {
-      return {
-        notFound: true,
-      };
-    }
-
-    return {
-      props: {
-        ...(await getServerSideTranslations(locale)),
-        product,
-      },
-    };
-  } catch {
-    return {
-      notFound: true,
-    };
-  }
 };
 
 export default Page;

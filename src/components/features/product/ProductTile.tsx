@@ -15,7 +15,7 @@ export const ProductTile = ({
   const inspectorProps = useContentfulInspectorMode({ entryId });
   return slug ? (
     <div {...inspectorProps({ fieldId: 'featuredProductImage' })}>
-      <Box as={Link} href={slug}>
+      <Box as={Link} href={'product/' + slug}>
         {featuredProductImage && (
           <Box borderRadius={4} overflow="hidden">
             <CtfImage {...featuredProductImage} />

@@ -16,6 +16,7 @@
     "start": "next start",
     "lint": "next lint",
     "type-check": "tsc --noEmit",
+    "graphql-codegen": "dotenv -e .env.local -- graphql-codegen",
     "graphql-codegen:generate": "graphql-codegen -r dotenv/config --config codegen.ts",
     "graphql-codegen:watch": "graphql-codegen --watch -r dotenv/config --config codegen.ts",
     "setup": "./bin/setup.sh"
@@ -41,6 +42,7 @@
     "@next/bundle-analyzer": "^13.0.4",
     "@next/font": "13.0.5",
     "@svgr/webpack": "^6.5.1",
+    "contentful": "^11.5.22",
     "dotenv": "^16.5.0",
     "framer-motion": "^7.6.11",
     "graphql": "^16.6.0",
@@ -67,6 +69,7 @@
     "@types/react-dom": "18.0.9",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^5.32.0",
+    "dotenv-cli": "^8.0.0",
     "eslint": "8.26.0",
     "eslint-config-next": "13.0.1",
     "eslint-config-prettier": "^8.3.0",
