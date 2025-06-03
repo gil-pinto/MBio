@@ -3,10 +3,10 @@ import { useContentfulLiveUpdates } from '@contentful/live-preview/react';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import { useTranslation } from 'next-i18next';
 
-
 import { SeoFields } from '@src/components/features/seo';
 import { client, previewClient } from '@src/lib/client';
 import { getServerSideTranslations } from '@src/pages/utils/get-serverside-translations';
+import { TopHeroBanner } from '@src/components/features/top-hero-banner/TopHeroBanner';
 
 const Page = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const { t } = useTranslation();
@@ -15,7 +15,7 @@ const Page = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
   return (
     <>
       {page.seoFields && <SeoFields {...page.seoFields} />}
-      <p>ola </p>
+      <TopHeroBanner />
     </>
   );
 };

@@ -19,7 +19,8 @@
     "graphql-codegen": "dotenv -e .env.local -- graphql-codegen",
     "graphql-codegen:generate": "graphql-codegen -r dotenv/config --config codegen.ts",
     "graphql-codegen:watch": "graphql-codegen --watch -r dotenv/config --config codegen.ts",
-    "setup": "./bin/setup.sh"
+    "setup": "./bin/setup.sh",
+    "yarn": "yarn"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx}": [
@@ -84,6 +85,7 @@
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
     "typescript": "4.9.3",
-    "typescript-graphql-request": "^4.4.6"
+    "typescript-graphql-request": "^4.4.6",
+    "yarn": "^1.22.22"
   }
 }
