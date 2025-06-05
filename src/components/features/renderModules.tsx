@@ -1,4 +1,13 @@
-export const ModularBlockRenderer = ({ block }: any) => {
+import React from 'react';
+
+interface ModularBlockRendererProps {
+  block: {
+    __typename?: string;
+    [key: string]: any;
+  };
+}
+
+export const ModularBlockRenderer: React.FC<ModularBlockRendererProps> = ({ block }) => {
   switch (block.__typename) {
     case 'PageProduct':
       return (
@@ -6,10 +15,10 @@ export const ModularBlockRenderer = ({ block }: any) => {
           <h3>{block.name}</h3>
           <p>{block.description}</p>
           <p>Price: {block.price}</p>
-          {block.featuredProductImage && (
+          {block.featuredProductImage?.fields?.file?.url && (
             <img
-              src={block.featuredProductImage.url}
-              alt={block.featuredProductImage.description || 'Product image'}
+              src={`https:${block.featuredProductImage.fields.file.url}`}
+              alt={block.featuredProductImage.fields.title || 'Product image'}
               style={{ maxWidth: '200px' }}
             />
           )}
@@ -19,9 +28,7 @@ export const ModularBlockRenderer = ({ block }: any) => {
     case 'HeroBanner':
       return (
         <div>
-          <div>
-            <p>Hello its Mercedes </p>
-          </div>
+          <p>Hello, it's Mercedes</p>
         </div>
       );
 
