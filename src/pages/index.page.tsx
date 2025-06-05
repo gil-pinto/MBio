@@ -15,7 +15,8 @@ const Page = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
   return (
     <>
       {page.seoFields && <SeoFields {...page.seoFields} />}
-      <TopHeroBanner />
+      <TopHeroBanner data={page.topHeroBanner} />
+
     </>
   );
 };

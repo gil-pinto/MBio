@@ -4,7 +4,7 @@ import styles from './TopHeroBanner.module.scss';
 import PauseIcon from 'public/assets/svg/pause-icon.svg';
 import PlayIcon from 'public/assets/svg/play-icon.svg';
 
-export const TopHeroBannerVideo = () => {
+export const TopHeroBannerVideo = ({ videoSrc }: { videoSrc?: string }) => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
@@ -23,6 +23,8 @@ export const TopHeroBannerVideo = () => {
     }
   };
 
+  if (!videoSrc) return null;
+
   return (
     <div className={styles.container}>
       <video
@@ -34,7 +36,7 @@ export const TopHeroBannerVideo = () => {
         autoPlay
         onLoadedData={() => setIsLoaded(true)}
         onError={() => setHasError(true)}
-        src="/assets/videos/banner_video.mp4"
+        src={videoSrc}
         poster="/assets/imgs/banner_poster.png"
       ></video>
 
@@ -42,23 +44,6 @@ export const TopHeroBannerVideo = () => {
         <button type="button" onClick={handleTogglePlay}>
           {isPlaying ? <PauseIcon /> : <PlayIcon />}
         </button>
-      </div>
-
-      <div className={styles.content}>
-        <wb-grid>
-          <wb-grid-row>
-            <wb-grid-col mq5="5" mq3="9" mq1="12">
-              <h1 className="wb-heading-xl">Bem vindo à Mercedes-Benz</h1>
-              <p className="wb-text-l">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-              </p>
-              <div className={styles["content-btns"]}>
-                <a className="wbx-button wbx-button--translucent wbx-button--large">Secondary Button</a>
-                <a className="wbx-button wbx-button--primary wbx-button--large">Primary Button</a>
-              </div>
-            </wb-grid-col>
-          </wb-grid-row>
-        </wb-grid>
       </div>
 
       {!isLoaded && !hasError && (
