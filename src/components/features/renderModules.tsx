@@ -1,4 +1,5 @@
 import React from 'react';
+import { TopHeroBanner } from './top-hero-banner/TopHeroBanner';
 
 interface ModularBlockRendererProps {
   block: {
@@ -10,6 +11,8 @@ interface ModularBlockRendererProps {
 export const ModularBlockRenderer: React.FC<ModularBlockRendererProps> = ({ block }) => {
   switch (block.__typename) {
     case 'PageProduct':
+      
+    console.log('pageproduct in modules:', block)
       return (
         <div>
           <h3>{block.name}</h3>
@@ -26,12 +29,21 @@ export const ModularBlockRenderer: React.FC<ModularBlockRendererProps> = ({ bloc
       );
 
     case 'HeroBanner':
+      
+    console.log('herobanner in modules:', block)
       return (
-        <div>
-          <p>Hello, it's Mercedes</p>
-        </div>
-      );
+        <>
+          <TopHeroBanner data={block}/>
+        </>
+        );
 
+    case 'link':
+      return (
+        <>
+        <h1>Ola123</h1>
+        </>
+      );
+      
     default:
       return <div>Unknown block type: {block.__typename}</div>;
   }

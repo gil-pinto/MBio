@@ -10,6 +10,8 @@ export const TopHeroBannerVideo = ({ videoSrc }: { videoSrc?: string }) => {
   const [hasError, setHasError] = useState(false);
   const [isPlaying, setIsPlaying] = useState(true);
 
+  console.log("videoSrc:", videoSrc)
+
   const handleTogglePlay = () => {
     const video = videoRef.current;
     if (!video) return;

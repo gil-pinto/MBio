@@ -104,13 +104,18 @@ const Page = ({ pageData }: { pageData: any }) => {
   const enrichedBlocks = modularBlocks
     .filter((block: any) => block != null)
     .map((block: any) => {
+      
+      console.log(block)
       const contentTypeId = block.sys?.contentType?.sys?.id || 'unknown';
       const __typename = contentTypeId.charAt(0).toUpperCase() + contentTypeId.slice(1);
       return {
         __typename,
         ...block.fields,
       };
+      
     });
+
+console.log(pageData)
 
   return (
     <>
@@ -120,8 +125,6 @@ const Page = ({ pageData }: { pageData: any }) => {
       </Head>
 
       <main>
-        <h1>{pageData.pageTitle}</h1>
-
         {enrichedBlocks.length > 0 ? (
           <ul>
             {enrichedBlocks.map((block, index) => (
@@ -129,6 +132,7 @@ const Page = ({ pageData }: { pageData: any }) => {
                 <ModularBlockRenderer block={block} />
               </li>
             ))}
+            
           </ul>
         ) : (
           <p>No blocks to display</p>
