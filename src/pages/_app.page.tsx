@@ -90,7 +90,7 @@ function MyApp({ Component, pageProps }: AppProps & { pageProps: any }) {
 }
 MyApp.getInitialProps = async (appContext: AppContext) => {
   const appProps = await App.getInitialProps(appContext);
-  const locale = appContext.ctx?.locale || 'en';
+  const locale = appContext.ctx?.locale || 'en-US';
   const footerData = await getFooterData(locale);
 
   return {

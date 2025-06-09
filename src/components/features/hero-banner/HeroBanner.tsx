@@ -18,15 +18,7 @@ const StyledBox = styled(Box)`
   }
 `;
 
-export const HeroBanner = ({
-  // Tutorial: contentful-and-the-starter-template.md
-  // Uncomment the line below to make the Greeting field available to render
-  // greeting,
-  heroBannerHeadline,
-  heroBannerHeadlineColor,
-  heroBannerImage,
-  sys: { id: entryId },
-}: PageLandingFieldsFragment) => {
+export const HeroBanner = ({ sys: { id: entryId } }: PageLandingFieldsFragment) => {
   const router = useRouter();
   const inspectorProps = useContentfulInspectorMode({ entryId });
 
@@ -85,21 +77,14 @@ export const HeroBanner = ({
       gridRow={2}
       gridColumn={1}
       mt={`-${HEADER_HEIGHT}px`}
-      {...inspectorProps({ fieldId: 'heroBannerImage' })}>
+      {...inspectorProps({ fieldId: 'heroBannerImage' })}
+    >
       <StyledBox
         gridColumnStart={2}
         zIndex={0}
         gridArea={{ base: '1 / 1 / 2 / 2' }}
-        maxHeight={{ base: '50vh', lg: '80vh' }}>
-        {heroBannerImage?.url && (
-          <CtfImage
-            imageProps={{
-              sizes: '100vw',
-            }}
-            {...heroBannerImage}
-          />
-        )}
-      </StyledBox>
+        maxHeight={{ base: '50vh', lg: '80vh' }}
+      ></StyledBox>
 
       <Flex
         flexDirection="column"
@@ -107,26 +92,23 @@ export const HeroBanner = ({
         gridArea={{ base: '1 / 1 / 2 / 2' }}
         overflow="hidden"
         justifyContent="flex-end"
-        maxHeight={{ base: '50vh', lg: '80vh' }}>
+        maxHeight={{ base: '50vh', lg: '80vh' }}
+      >
         <Container ref={containerRef}>
           <motion.div
             initial={false}
             animate={{
               opacity: headingVisible ? 1 : 0,
-            }}>
+            }}
+          >
             <Heading
               {...inspectorProps({ fieldId: 'heroBannerHeadline' })}
               ref={headingRef}
               as="h1"
               letterSpacing="-0.11em"
-              color={heroBannerHeadlineColor || 'white'}
               transform="translateY(0.33em)"
-              whiteSpace="nowrap">
-              {/* Tutorial: contentful-and-the-starter-template.md
-              {/* Uncomment the line below to render the Greeting field value */}
-              {/* {greeting} {' '} */}
-              {heroBannerHeadline}
-            </Heading>
+              whiteSpace="nowrap"
+            ></Heading>
           </motion.div>
         </Container>
       </Flex>

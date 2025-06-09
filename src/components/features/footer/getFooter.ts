@@ -77,7 +77,7 @@ const GET_FOOTER_QUERY = `
 
 const ENTRY_ID = '2nEzgazLBWtpkolmjrve55';
 
-export const getFooterData = async (locale: string = 'en') => {
+export const getFooterData = async (locale: string = 'en-US') => {
   const client = getClient();
 
   const variables = {

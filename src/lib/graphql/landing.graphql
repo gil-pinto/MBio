@@ -8,14 +8,6 @@ fragment PageLandingFields on PageLanding {
   seoFields {
     ...SeoFields
   }
-  # Tutorial: contentful-and-the-starter-template.md
-  # Uncomment the line below to add the Greeting field to the query
-  # greeting
-  heroBannerHeadline
-  heroBannerHeadlineColor
-  heroBannerImage {
-    ...ImageFields
-  }
   productsCollection(limit: 6) {
     items {
       ...PageProductFields
