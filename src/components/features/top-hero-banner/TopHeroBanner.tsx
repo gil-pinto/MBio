@@ -1,6 +1,7 @@
 import dynamic from 'next/dynamic';
 import styles from './TopHeroBanner.module.scss';
 import { useHasMounted } from '@src/hooks/useHasMounted';
+import Link from 'next/link';
 
 const TopHeroBannerVideo = dynamic(
   () => import('./TopHeroBannerVideo').then(mod => mod.TopHeroBannerVideo),
@@ -18,8 +19,6 @@ export const TopHeroBanner = ({ data }: { data: any }) => {
     ? `https:${backgroundVideo.fields.file.url}`
     : `https:${backgroundImage.fields.file.url}`;
 
-      console.log("bgVideo:", backgroundVideo, data.backgroundVideo)
-      console.log("bgUrl:", backgroundUrl)
   return (
     <section className={styles.heroBanner}>
       <div className={styles.hbContainer}>
@@ -33,13 +32,13 @@ export const TopHeroBanner = ({ data }: { data: any }) => {
                 <p className="wb-text-l">{subtitle}</p>
                 <div className={styles["content-btns"]}>
                   {data.link.map((btn: any, i: number) => (
-                    <a
+                    <Link
                       key={i}
                       href={btn.fields.url}
                       className={`wbx-button wbx-button--${btn.fields.variant || 'primary'} wbx-button--large`}
                     >
                       {btn.fields.label}
-                    </a>
+                    </Link>
                   ))}
                 </div>
               </wb-grid-col>
