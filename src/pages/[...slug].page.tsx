@@ -1,4 +1,3 @@
-// pages/[slug].tsx (ou outro caminho conforme a sua estrutura)
 import { GetStaticProps, GetStaticPaths } from 'next';
 import { createClient, Entry } from 'contentful';
 import Head from 'next/head';
@@ -72,6 +71,7 @@ async function getGenericContentPageData(slug: string, locale: string) {
     'fields.urlPath': slug,
     locale,
     limit: 1,
+    include: 10,
   });
 
   return entries.items[0]?.fields || null;
@@ -105,7 +105,6 @@ const Page = ({ pageData }: { pageData: any }) => {
     .filter((block: any) => block != null)
     .map((block: any) => {
       
-      console.log(block)
       const contentTypeId = block.sys?.contentType?.sys?.id || 'unknown';
       const __typename = contentTypeId.charAt(0).toUpperCase() + contentTypeId.slice(1);
       return {
@@ -115,8 +114,6 @@ const Page = ({ pageData }: { pageData: any }) => {
       
     });
 
-console.log(pageData)
-
   return (
     <>
       <Head>
@@ -125,6 +122,7 @@ console.log(pageData)
       </Head>
 
       <main>
+
         {enrichedBlocks.length > 0 ? (
           <ul>
             {enrichedBlocks.map((block, index) => (

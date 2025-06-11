@@ -29,7 +29,6 @@ export const ModularBlockRenderer: React.FC<ModularBlockRendererProps> = ({ bloc
       );
 
     case 'HeroBanner':
-      
     console.log('herobanner in modules:', block)
       return (
         <>
@@ -37,13 +36,6 @@ export const ModularBlockRenderer: React.FC<ModularBlockRendererProps> = ({ bloc
         </>
         );
 
-    case 'link':
-      return (
-        <>
-        <h1>Ola123</h1>
-        </>
-      );
-      
     default:
       return <div>Unknown block type: {block.__typename}</div>;
   }

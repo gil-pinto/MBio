@@ -8,8 +8,6 @@ const TopHeroBannerVideo = dynamic(
 );
 
 export const TopHeroBanner = ({ data }: { data: any }) => {
-  console.log('HeroBanner', data)
-
   const hasMounted = useHasMounted();
   if (!data || !hasMounted) return null;
 
@@ -25,22 +23,22 @@ export const TopHeroBanner = ({ data }: { data: any }) => {
   return (
     <section className={styles.heroBanner}>
       <div className={styles.hbContainer}>
-        <TopHeroBannerVideo videoSrc={backgroundUrl} />
+      <TopHeroBannerVideo videoSrc={backgroundUrl} />
 
         <div className={styles.content}>
           <wb-grid>
             <wb-grid-row>
-              <wb-grid-col mq5="5" mq3="9" mq1="12">
+              <wb-grid-col mq6="6" mq3="9" mq1="12">
                 <h1 className="wb-heading-xl">{title}</h1>
                 <p className="wb-text-l">{subtitle}</p>
                 <div className={styles["content-btns"]}>
                   {data.link.map((btn: any, i: number) => (
                     <a
                       key={i}
-                      href={btn.url}
-                      className={`wbx-button wbx-button--${btn.style || 'primary'} wbx-button--large`}
+                      href={btn.fields.url}
+                      className={`wbx-button wbx-button--${btn.fields.variant || 'primary'} wbx-button--large`}
                     >
-                      {btn.label}
+                      {btn.fields.label}
                     </a>
                   ))}
                 </div>
