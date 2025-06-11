@@ -1,5 +1,6 @@
 import React from 'react';
 import { TopHeroBanner } from './top-hero-banner/TopHeroBanner';
+import { HpCampaigns } from './hp-campaigns/HpCampaigns';
 
 interface ModularBlockRendererProps {
   block: {
@@ -35,6 +36,13 @@ export const ModularBlockRenderer: React.FC<ModularBlockRendererProps> = ({ bloc
           <TopHeroBanner data={block}/>
         </>
         );
+
+    case 'HpCampaigns':
+      return(
+        <>
+          <HpCampaigns />
+        </>
+      )
 
     default:
       return <div>Unknown block type: {block.__typename}</div>;
