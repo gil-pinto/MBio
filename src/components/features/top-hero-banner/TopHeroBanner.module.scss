@@ -67,10 +67,10 @@
     justify-content: center;
     padding: 2rem;
     text-wrap: balance;
-  }
-  
-  .content p {
-    margin-top: var(--wb-spacing-s);
+    
+    .content p {
+      margin-top: var(--wb-spacing-s);
+    }
   }
   
   .content-btns {
@@ -80,9 +80,17 @@
     gap: 12px;
     width: auto;
     flex-wrap: wrap;
+
+    & > :first-child {
+      color: white;
+    }
   }
   
-  .content-btns .wbx-button--translucent {
+  .wbx-button--translucent {
+    color: white;
+  } 
+
+  .wbx-button--secondary {
     color: white;
   }
   
