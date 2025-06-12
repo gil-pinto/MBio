@@ -27,7 +27,7 @@ export const TopHeroBanner = ({ data }: { data: any }) => {
         <div className={styles.content}>
           <wb-grid>
             <wb-grid-row>
-              <wb-grid-col mq6="6" mq3="9" mq1="12">
+              <wb-grid-col m12="1" mq9="3" mq6="6" mq3="9" mq1="12">
                 <h1 className="wb-heading-xl">{title}</h1>
                 <p className="wb-text-l">{subtitle}</p>
                 <div className={styles["content-btns"]}>
