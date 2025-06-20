@@ -1,5 +1,6 @@
 import React from 'react';
 import { TopHeroBanner } from './top-hero-banner/TopHeroBanner';
+import { HpCampaigns } from './hp-campaigns/HpCampaigns';
 
 interface ModularBlockRendererProps {
   block: {
@@ -10,6 +11,7 @@ interface ModularBlockRendererProps {
 
 export const ModularBlockRenderer: React.FC<ModularBlockRendererProps> = ({ block }) => {
   switch (block.__typename) {
+    
     case 'PageProduct':
       
     console.log('pageproduct in modules:', block)
@@ -31,9 +33,17 @@ export const ModularBlockRenderer: React.FC<ModularBlockRendererProps> = ({ bloc
     case 'HeroBanner':
     console.log('herobanner in modules:', block)
       return (
-        <>
-          <TopHeroBanner data={block}/>
-        </>
+        <section>
+          <TopHeroBanner data ={block}/>
+        </section>
+      );
+
+      case 'HpCampaignsContainer':
+        console.log('hp campaign in modules:', block)
+        return(
+          <section>
+            <HpCampaigns data={block} />
+          </section>
         );
 
     default:
