@@ -1,4 +1,3 @@
-'use client';
 import { useRef, useState } from "react";
 import styles from './TopHeroBanner.module.scss';
 import PauseIcon from 'public/assets/svg/pause-icon.svg';

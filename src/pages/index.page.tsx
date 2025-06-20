@@ -17,10 +17,8 @@ const Page = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
     <>
       {page.seoFields && <SeoFields {...page.seoFields} />}
       <TopHeroBanner data={page.TopHeroBanner} />
-      <HpCampaigns />
-
     </>
-  );
+  );  
 };
 
 export const getServerSideProps: GetServerSideProps = async ({ locale, preview }) => {

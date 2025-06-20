@@ -11,6 +11,7 @@ interface ModularBlockRendererProps {
 
 export const ModularBlockRenderer: React.FC<ModularBlockRendererProps> = ({ block }) => {
   switch (block.__typename) {
+    
     case 'PageProduct':
       
     console.log('pageproduct in modules:', block)
@@ -32,17 +33,18 @@ export const ModularBlockRenderer: React.FC<ModularBlockRendererProps> = ({ bloc
     case 'HeroBanner':
     console.log('herobanner in modules:', block)
       return (
-        <>
-          <TopHeroBanner data={block}/>
-        </>
-        );
+        <section>
+          <TopHeroBanner data ={block}/>
+        </section>
+      );
 
-    case 'HpCampaigns':
-      return(
-        <>
-          <HpCampaigns />
-        </>
-      )
+      case 'HpCampaignsContainer':
+        console.log('hp campaign in modules:', block)
+        return(
+          <section>
+            <HpCampaigns data={block} />
+          </section>
+        );
 
     default:
       return <div>Unknown block type: {block.__typename}</div>;

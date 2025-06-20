@@ -1,3 +1,4 @@
+'use client'
 import dynamic from 'next/dynamic';
 import styles from './TopHeroBanner.module.scss';
 import { useHasMounted } from '@src/hooks/useHasMounted';
@@ -12,7 +13,7 @@ export const TopHeroBanner = ({ data }: { data: any }) => {
   const hasMounted = useHasMounted();
   if (!data || !hasMounted) return null;
 
-  const { title, subtitle, backgroundType, backgroundImage, backgroundVideo, link = [] } = data;
+  const { title, subtitle, backgroundType, backgroundImage, backgroundVideo = [] } = data;
 
   const backgroundUrl =
   backgroundType === 'video'
