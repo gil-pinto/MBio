@@ -10,7 +10,7 @@ export default function handler(
   const car = cars.find((c) => c.id === id);
 
   if (!car) {
-    return res.status(404).json({ error: 'Car not found' });
+    return res.status(404).json({ error: 'Car either doesnt exist or cant be found! Sorry :(' });
   }
 
   res.status(200).json(car);
