@@ -9,8 +9,6 @@ export const TopHeroBannerVideo = ({ videoSrc }: { videoSrc?: string }) => {
   const [hasError, setHasError] = useState(false);
   const [isPlaying, setIsPlaying] = useState(true);
 
-  console.log("videoSrc:", videoSrc)
-
   const handleTogglePlay = () => {
     const video = videoRef.current;
     if (!video) return;
@@ -38,7 +36,7 @@ export const TopHeroBannerVideo = ({ videoSrc }: { videoSrc?: string }) => {
         onLoadedData={() => setIsLoaded(true)}
         onError={() => setHasError(true)}
         src={videoSrc}
-        poster="/assets/imgs/banner_poster.png"
+        poster="/assets/imgs/HeroBanner/banner_poster.png"
       ></video>
 
       <div className={styles["video-controls"]}>

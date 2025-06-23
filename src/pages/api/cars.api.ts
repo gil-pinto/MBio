@@ -1,7 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-console.log("cars.ts loaded")
-
 type Car = {
   id: string;
   model: string;
