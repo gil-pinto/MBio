@@ -32,15 +32,25 @@ export const HpCampaigns = ({ data }: { data: any }) => {
     <section className={styles.campaignsContainer} ref={sectionRef}>
       <div className={styles.cardContainer}>
         <wb-grid>
-        <div className={styles.campaignsHeadline}>
-          <wb-heading tag="h1" size="l">{data.title}</wb-heading>
-        </div>
+          <div className={styles.campaignsHeadline}>
+            <wb-heading tag="h1" size="l">{data.title}</wb-heading>
+          </div>
           <wb-grid-row>
-            {cards.map((cardData: any, index: number) => (
-              <wb-grid-col key={index} mq1="6" mq3="5" mq4="4">
-                <HpCampaignsCard data={cardData} />
-              </wb-grid-col>
-            ))}
+            {cards
+              .filter((card: any) => {
+                const fields = card?.fields;
+                return (
+                  fields?.title ||
+                  fields?.description ||
+                  fields?.backgroundImage?.fields?.file?.url ||
+                  (fields?.link && fields?.link[0]?.fields?.url)
+                );
+              })
+              .map((cardData: any, index: number) => (
+                <wb-grid-col key={index} mq1="6" mq3="5" mq4="4">
+                  <HpCampaignsCard data={cardData} />
+                </wb-grid-col>
+              ))}
           </wb-grid-row>
         </wb-grid>
       </div>
