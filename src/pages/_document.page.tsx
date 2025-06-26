@@ -25,6 +25,11 @@ export default function Document() {
           rel="stylesheet"
         />
 
+        <link
+          href="https://assets.oneweb.mercedes-benz.com/plugin/workbench/core/7.70.0/css/extensions/grid.css"
+          rel="stylesheet"
+        />
+
         <Script
           src="https://assets.oneweb.mercedes-benz.com/plugin/workbench/core/7.70.0/workbench/workbench.esm.js"
           strategy="beforeInteractive"

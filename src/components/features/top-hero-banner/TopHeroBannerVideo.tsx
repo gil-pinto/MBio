@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from './TopHeroBanner.module.scss';
 import PauseIcon from 'public/assets/svg/pause-icon.svg';
 import PlayIcon from 'public/assets/svg/play-icon.svg';
@@ -21,6 +21,13 @@ export const TopHeroBannerVideo = ({ videoSrc }: { videoSrc?: string }) => {
       setIsPlaying(false);
     }
   };
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video && video.readyState >= 3) {
+      setIsLoaded(true);
+    }
+  }, []);
 
   if (!videoSrc) return null;
 

@@ -1,41 +1,18 @@
-import { useEffect, useRef } from 'react';
 import styles from './HpCampaigns.module.scss';
-import dynamic from 'next/dynamic';
-
-const HpCampaignsCard = dynamic(
-  () => import('./HpCampaignsCard').then(mod => mod.HpCampaignsCard),
-  { ssr: false }
-);
+import { HpCampaignsCard } from './HpCampaignsCard';
 
 export const HpCampaigns = ({ data }: { data: any }) => {
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      const container = sectionRef.current;
-      if (!container) return;
-
-      const gridRow = container.querySelector('wb-grid-row');
-      if (gridRow) {
-        (gridRow as HTMLElement).style.gridTemplateColumns = 'repeat(auto-fit, minmax(50px, 1fr))';
-        (gridRow as HTMLElement).style.gap = '3%';
-        (gridRow as HTMLElement).style.marginBottom = '100px';
-      }
-    }, 0);
-
-    return () => clearTimeout(timeout);
-  }, []);
 
   const cards = data.cardBlocks || [];
 
   return (
-    <section className={styles.campaignsContainer} ref={sectionRef}>
+    <section className={styles.campaignsContainer}>
       <div className={styles.cardContainer}>
-        <wb-grid>
-          <div className={styles.campaignsHeadline}>
-            <wb-heading tag="h1" size="l">{data.title}</wb-heading>
+        <div className="wbx-grid-container">
+          <div className={styles.campaignsHeadline} style={{ color: 'var(--wb-text-headline-text-headline-color)' }} >
+            <span className="wb-heading-l">{data.title}</span>
           </div>
-          <wb-grid-row>
+          <div className={`wbx-grid-row ${styles.campaignsGridRow}`}>
             {cards
               .filter((card: any) => {
                 const fields = card?.fields;
@@ -47,12 +24,12 @@ export const HpCampaigns = ({ data }: { data: any }) => {
                 );
               })
               .map((cardData: any, index: number) => (
-                <wb-grid-col key={index} mq1="6" mq3="5" mq4="4">
+                <div className="wbx-grid-col-mq1-6 wbx-grid-col-mq3-5 wbx-grid-col-mq4-4" key={index}>
                   <HpCampaignsCard data={cardData} />
-                </wb-grid-col>
+                </div>
               ))}
-          </wb-grid-row>
-        </wb-grid>
+          </div>
+        </div>
       </div>
     </section>
   );
