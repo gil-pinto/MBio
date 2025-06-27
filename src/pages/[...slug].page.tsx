@@ -20,11 +20,7 @@ function cleanData(value: any, seen = new WeakSet()): any {
   const cleanedObj: any = {};
   for (const key in value) {
     if (Object.prototype.hasOwnProperty.call(value, key)) {
-      if (key === 'relatedProducts') {
-        cleanedObj[key] = value[key].map((rp: any) => ({ sys: rp.sys }));
-      } else {
-        cleanedObj[key] = cleanData(value[key], seen);
-      }
+      cleanedObj[key] = cleanData(value[key], seen);
     }
   }
   return cleanedObj;
@@ -104,14 +100,12 @@ const Page = ({ pageData }: { pageData: any }) => {
   const enrichedBlocks = modularBlocks
     .filter((block: any) => block != null)
     .map((block: any) => {
-      
       const contentTypeId = block.sys?.contentType?.sys?.id || 'unknown';
       const __typename = contentTypeId.charAt(0).toUpperCase() + contentTypeId.slice(1);
       return {
         __typename,
         ...block.fields,
       };
-      
     });
 
   return (
@@ -122,7 +116,6 @@ const Page = ({ pageData }: { pageData: any }) => {
       </Head>
 
       <main>
-
         {enrichedBlocks.length > 0 ? (
           <ul>
             {enrichedBlocks.map((block, index) => (
@@ -130,7 +123,6 @@ const Page = ({ pageData }: { pageData: any }) => {
                 <ModularBlockRenderer block={block} />
               </li>
             ))}
-            
           </ul>
         ) : (
           <p>No blocks to display</p>

@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 const TopHeroBannerVideo = dynamic(
   () => import('./TopHeroBannerVideo').then(mod => mod.TopHeroBannerVideo),
-  { ssr: false }
+  { ssr: false },
 );
 
 export const TopHeroBanner = ({ data }: { data: any }) => {
@@ -15,14 +15,18 @@ export const TopHeroBanner = ({ data }: { data: any }) => {
   const { title, subtitle, backgroundType, backgroundImage, backgroundVideo, link = [] } = data;
 
   const backgroundUrl =
-  backgroundType === 'video'
-    ? `https:${backgroundVideo.fields.file.url}`
-    : `https:${backgroundImage.fields.file.url}`;
+    backgroundType === 'video'
+      ? `https:${backgroundVideo.fields.file.url}`
+      : `https:${backgroundImage.fields.file.url}`;
 
   return (
     <section className={styles.heroBanner}>
       <div className={styles.hbContainer}>
-      <TopHeroBannerVideo videoSrc={backgroundUrl} />
+        {backgroundType === 'video' ? (
+          <TopHeroBannerVideo videoSrc={backgroundUrl} />
+        ) : (
+          <img src={backgroundUrl} alt={title} className={styles.backgroundImage} />
+        )}
 
         <div className={styles.content}>
           <wb-grid>
@@ -30,13 +34,14 @@ export const TopHeroBanner = ({ data }: { data: any }) => {
               <wb-grid-col mq6="6" mq3="9" mq1="12">
                 <h1 className="wb-heading-xl">{title}</h1>
                 <p className="wb-text-l">{subtitle}</p>
-                <div className={styles["content-btns"]}>
-                  {data.link.map((btn: any, i: number) => (
+                <div className={styles['content-btns']}>
+                  {link.map((btn: any, i: number) => (
                     <Link
                       key={i}
                       href={btn.fields.url}
-                      className={`wbx-button wbx-button--${btn.fields.variant || 'primary'} wbx-button--large`}
-                    >
+                      className={`wbx-button wbx-button--${
+                        btn.fields.variant || 'primary'
+                      } wbx-button--large`}>
                       {btn.fields.label}
                     </Link>
                   ))}

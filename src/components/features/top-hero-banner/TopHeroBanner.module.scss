@@ -11,116 +11,128 @@
 }
 
 .container {
-    width: 100vw;
-    height: 100vh;
-    min-height: 600px;
-    color: white;
-    background: black;
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .video {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    background: rgba(255, 0, 0, 0.5);
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-  }
-  
-  .video-controls {
-    position: absolute;
-    bottom: var(--wb-spacing-m);
-    inset-inline: 0;
-    z-index: 3;
-    display: flex;
-    justify-content: center;
-    bottom: 9%;
-    left: 9%;
-    background-color: white;
-    height: 35px;
-    width: 35px;
-    border-radius: 100%;
+  width: 100vw;
+  height: 100vh;
+  min-height: 600px;
+  color: white;
+  background: black;
+  position: relative;
+  overflow: hidden;
+}
 
-    &:hover {
-      background-color: #ffffffd8;
-    }
-    
-    button {
-      cursor: pointer;
-      
-      svg {
-        width: 24px;
-      }
-    }
+.video {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: rgba(255, 0, 0, 0.5);
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.video-controls {
+  position: absolute;
+  bottom: var(--wb-spacing-m);
+  inset-inline: 0;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  bottom: 9%;
+  left: 9%;
+  background-color: white;
+  height: 35px;
+  width: 35px;
+  border-radius: 100%;
+
+  &:hover {
+    background-color: #ffffffd8;
   }
-  
-  .content {
-    color: white;
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-    text-wrap: balance;
-  }
-  
-  .content p {
-    margin-top: var(--wb-spacing-s);
-  }
-  
-  .content-btns {
-    margin-top: var(--wb-spacing-s);
-    display: flex;
-    justify-content: space-between;
-    gap: 12px;
-    width: auto;
-    flex-wrap: wrap;
-  }
-  
-  .content-btns .wbx-button--translucent {
-    color: white;
-  }
-  
-  .video-loader-overlay {
-    position: absolute;
-    inset: 0;
-    background-color: rgba(0, 0, 0, 0.6);
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 10;
-  }
-  
-  .spinner {
-    width: 30px;
-    height: 30px;
-    border: 4px solid #fff;
-    border-top-color: #999;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    margin-top: 12px;
-  }
-  
-  @keyframes spin {
-    to {
-      transform: rotate(360deg);
+
+  button {
+    cursor: pointer;
+
+    svg {
+      width: 24px;
     }
   }
-  
-  .error-message {
-    padding: 2rem;
-    text-align: center;
-    background-color: #fee;
-    color: #900;
-    z-index: 20;
-    position: absolute;
-    inset: 0;
+}
+
+.content {
+  color: white;
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  text-wrap: balance;
+}
+
+.content p {
+  margin-top: var(--wb-spacing-s);
+}
+
+.content-btns {
+  margin-top: var(--wb-spacing-s);
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  width: auto;
+  flex-wrap: wrap;
+}
+
+.content-btns .wbx-button--translucent {
+  color: white;
+}
+
+.video-loader-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.spinner {
+  width: 30px;
+  height: 30px;
+  border: 4px solid #fff;
+  border-top-color: #999;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-top: 12px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
   }
-  
+}
+
+.error-message {
+  padding: 2rem;
+  text-align: center;
+  background-color: #fee;
+  color: #900;
+  z-index: 20;
+  position: absolute;
+  inset: 0;
+}
+.backgroundImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+.TopHeroBanner_content__c5BMm {
+  box-shadow: inset 0 0 1000px rgba(0, 0, 0, 0.4);
+}
+
