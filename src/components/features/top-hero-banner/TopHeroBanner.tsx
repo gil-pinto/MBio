@@ -1,11 +1,8 @@
 import styles from './TopHeroBanner.module.scss';
 import Link from 'next/link';
-
-
 import { TopHeroBannerVideo } from './TopHeroBannerVideo';
 
 export const TopHeroBanner = ({ data }: { data: any }) => {
-
   if (!data) return null;
 
   const { title, subtitle, backgroundType, backgroundImage, backgroundVideo = [] } = data;
@@ -31,7 +28,7 @@ export const TopHeroBanner = ({ data }: { data: any }) => {
                 <h1 className="wb-heading-xl">{title}</h1>
                 <p className="wb-text-l">{subtitle}</p>
                 <div className={styles['content-btns']}>
-                  {link.map((btn: any, i: number) => (
+                  {data.link.map((btn: any, i: number) => (
                     <Link
                       key={i}
                       href={btn.fields.url}

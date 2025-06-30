@@ -20,10 +20,10 @@ export const OwcTextMedia = ({ data }: { data: any }) => {
         )}
 
         <div className={styles.content}>
-          {subtitle && <p className="wb-text-l">{subtitle}</p>}
           <div className="wbx-grid-container">
-            <div className="wbx-grid-row">
+            <div className="">
               <div className="wbx-grid-col-mq1-12 wbx-grid-col-mq3-9 wbx-grid-col-mq6-6 wbx-grid-col-mq9-3 wbx-grid-col-mq12-1">
+                {subtitle && <p className="wb-text-l">{subtitle}</p>}
                 {title && <h1 className="wb-heading-xl">{title}</h1>}
                 {data.richTextBody && (
                   <div className="wb-text-l">{documentToReactComponents(data.richTextBody)}</div>
