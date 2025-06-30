@@ -1,0 +1,90 @@
+.heroBanner {
+  position: relative;
+  height: auto;
+  min-height: 600px;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  padding: 4rem 0;
+  margin-bottom: 100px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    padding: 2rem 0;
+  }
+}
+
+.hbContainer {
+  display: flex;
+  width: 100%;
+  max-width: 1440px;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 2rem;
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    gap: 3rem;
+  }
+}
+
+.imageContainer {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 2rem;
+
+  @media (max-width: 1024px) {
+    padding: 0 1.5rem;
+  }
+}
+
+.image {
+  width: 100%;
+  height: 35rem;
+  object-fit: fill;
+  border-radius: 2px;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 4rem;
+  position: relative;
+
+  @media (max-width: 1024px) {
+    padding: 0 1.5rem;
+  }
+  p {
+    color: #7a7a7a;
+  }
+  h1 {
+    margin-bottom: 1rem;
+  }
+}
+
+.content-btns {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+  width: 43%;
+
+  a {
+    text-decoration: none;
+  }
+
+  .wbx-button {
+    transition: all 0.3s ease;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+}
