@@ -3,3 +3,4 @@ declare namespace JSX {
     [elemName: `wb-${string}`]: any;
   }
 }
+export {};
