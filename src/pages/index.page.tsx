@@ -7,6 +7,7 @@ import { SeoFields } from '@src/components/features/seo';
 import { client, previewClient } from '@src/lib/client';
 import { getServerSideTranslations } from '@src/pages/utils/get-serverside-translations';
 import { TopHeroBanner } from '@src/components/features/top-hero-banner/TopHeroBanner';
+import { HpCampaigns } from '@src/components/features/hp-campaigns/HpCampaigns';
 
 const Page = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const { t } = useTranslation();
@@ -16,9 +17,8 @@ const Page = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
     <>
       {page.seoFields && <SeoFields {...page.seoFields} />}
       <TopHeroBanner data={page.TopHeroBanner} />
-
     </>
-  );
+  );  
 };
 
 export const getServerSideProps: GetServerSideProps = async ({ locale, preview }) => {

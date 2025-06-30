@@ -1,18 +1,14 @@
-import dynamic from 'next/dynamic';
 import styles from './TopHeroBanner.module.scss';
-import { useHasMounted } from '@src/hooks/useHasMounted';
 import Link from 'next/link';
 
-const TopHeroBannerVideo = dynamic(
-  () => import('./TopHeroBannerVideo').then(mod => mod.TopHeroBannerVideo),
-  { ssr: false },
-);
+
+import { TopHeroBannerVideo } from './TopHeroBannerVideo';
 
 export const TopHeroBanner = ({ data }: { data: any }) => {
-  const hasMounted = useHasMounted();
-  if (!data || !hasMounted) return null;
 
-  const { title, subtitle, backgroundType, backgroundImage, backgroundVideo, link = [] } = data;
+  if (!data) return null;
+
+  const { title, subtitle, backgroundType, backgroundImage, backgroundVideo = [] } = data;
 
   const backgroundUrl =
     backgroundType === 'video'
@@ -29,9 +25,9 @@ export const TopHeroBanner = ({ data }: { data: any }) => {
         )}
 
         <div className={styles.content}>
-          <wb-grid>
-            <wb-grid-row>
-              <wb-grid-col mq6="6" mq3="9" mq1="12">
+          <div className="wbx-grid-container">
+            <div className="wbx-grid-row">
+              <div className="wbx-grid-col-mq1-12 wbx-grid-col-mq3-9 wbx-grid-col-mq6-6 wbx-grid-col-mq9-3 wbx-grid-col-mq12-1">
                 <h1 className="wb-heading-xl">{title}</h1>
                 <p className="wb-text-l">{subtitle}</p>
                 <div className={styles['content-btns']}>
@@ -46,9 +42,9 @@ export const TopHeroBanner = ({ data }: { data: any }) => {
                     </Link>
                   ))}
                 </div>
-              </wb-grid-col>
-            </wb-grid-row>
-          </wb-grid>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

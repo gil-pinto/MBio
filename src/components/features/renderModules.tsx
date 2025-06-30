@@ -1,6 +1,7 @@
 import React from 'react';
 import { TopHeroBanner } from './top-hero-banner/TopHeroBanner';
 import { OwcTextMedia } from './owc-text-media-module/owcTextMediaModule';
+import { HpCampaigns } from './hp-campaigns/HpCampaigns';
 
 interface ModularBlockRendererProps {
   block: {
@@ -11,6 +12,7 @@ interface ModularBlockRendererProps {
 
 export const ModularBlockRenderer: React.FC<ModularBlockRendererProps> = ({ block }) => {
   switch (block.__typename) {
+    
     case 'PageProduct':
       console.log('pageproduct in modules:', block);
       return (
@@ -30,10 +32,11 @@ export const ModularBlockRenderer: React.FC<ModularBlockRendererProps> = ({ bloc
 
     case 'HeroBanner':
       return (
-        <>
-          <TopHeroBanner data={block} />
-        </>
+        <section>
+          <TopHeroBanner data ={block}/>
+        </section>
       );
+
 
     case 'OwcTextMediaModule':
       return (
@@ -41,6 +44,14 @@ export const ModularBlockRenderer: React.FC<ModularBlockRendererProps> = ({ bloc
           <OwcTextMedia data={block} />
         </>
       );
+
+      case 'HpCampaignsContainer':
+        console.log('hp campaign in modules:', block)
+        return(
+          <section>
+            <HpCampaigns data={block} />
+          </section>
+        );
 
     default:
       return <div>Unknown block type: {block.__typename}</div>;

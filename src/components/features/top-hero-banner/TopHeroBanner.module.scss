@@ -2,6 +2,7 @@
   height: 95vh;
   position: relative;
   overflow: hidden;
+  margin-bottom: 100px;
 }
 
 .hbContainer {
@@ -9,45 +10,6 @@
   width: 100%;
   height: 100%;
 }
-
-.container {
-  width: 100vw;
-  height: 100vh;
-  min-height: 600px;
-  color: white;
-  background: black;
-  position: relative;
-  overflow: hidden;
-}
-
-.video {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background: rgba(255, 0, 0, 0.5);
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-}
-
-.video-controls {
-  position: absolute;
-  bottom: var(--wb-spacing-m);
-  inset-inline: 0;
-  z-index: 3;
-  display: flex;
-  justify-content: center;
-  bottom: 9%;
-  left: 9%;
-  background-color: white;
-  height: 35px;
-  width: 35px;
-  border-radius: 100%;
-
-  &:hover {
-    background-color: #ffffffd8;
-  }
-
   button {
     cursor: pointer;
 
